@@ -5,8 +5,8 @@ public class Database {
     private static final ArrayList<Item> itemList = new ArrayList<>();
     private static final ArrayList<Manger> managerList = new ArrayList<>();
     private static final ArrayList<SalesMan> salesManList = new ArrayList<>();
-    private static final HashMap<String, Float> salesList = new HashMap<>();
-    private static final HashMap<String, Float> purchaseList = new HashMap<>();
+    private static final HashMap<Item, Float> salesList = new HashMap<>();
+    private static final HashMap<Item, Float> purchaseList = new HashMap<>();
 
     public static Manger getManger(String id){
         for (Manger m : managerList) {
@@ -27,11 +27,11 @@ public class Database {
         return null;
     }
 
-    static HashMap<String, Float> getSalesList(){
+    static HashMap<Item, Float> getSalesList(){
          return salesList;
      }
 
-    static HashMap<String, Float> getPurchaseList(){
+    static HashMap<Item, Float> getPurchaseList(){
         return purchaseList;
     }
     public static boolean checkUserName(String username,int choice){
@@ -179,8 +179,8 @@ public class Database {
         if((managerList.contains(getManger(idNo))) || idNo.equals("owner"))
         {
             itemList.add(item);
-            salesList.put(item.getItemId(), (float) 0);
-            purchaseList.put(item.getItemId(),item.getQuantity());
+            salesList.put(item, (float) 0);
+            purchaseList.put(item,item.getQuantity());
         }
         else{
             System.out.println("Access denied");
@@ -214,9 +214,9 @@ public class Database {
                 item1=item;
                 item1.setQuantity(quantity);
                 itemList.set(itemList.indexOf(item),item1);
-                float value=salesList.get(item.getItemId());
+                float value=salesList.get(item);
                 value=value+updateQuantity;
-                salesList.put(item.getItemId(),value);
+                salesList.put(item,value);
             }
             else {
                 System.out.println("access denied");
@@ -229,9 +229,9 @@ public class Database {
                 item1=item;
                 item1.setQuantity(quantity);
                 itemList.set(itemList.indexOf(item),item1);
-                float value = purchaseList.get(item.getItemId());
+                float value = purchaseList.get(item);
                 value=value+updateQuantity;
-                purchaseList.put(item.getItemId(),value);
+                purchaseList.put(item,value);
             }
             else {
                 System.out.println("access denied");

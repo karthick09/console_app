@@ -306,12 +306,12 @@ public class Main {
                                     System.out.println("enter the quantity");
                                     quantity = validateFloat();
                                     Item item = new Item(itemId, iName, price, quantity);
-                                    owner.addItem(item,owner.getPassword());
+                                    owner.addItem(item,owner.password());
                                 }
                                 case 7 -> {
                                     System.out.println("enter the item id");
                                     itemId = sc.next();
-                                    owner.deleteItem(itemId, owner.getPassword());
+                                    owner.deleteItem(itemId, owner.password());
                                 }
                                 case 8 -> {
                                     System.out.println("enter the item no ");
@@ -341,7 +341,7 @@ public class Main {
                                         System.out.println("enter the quantity");
                                         quantity = validateFloat();
                                         Item item = new Item(itemId, iName, price, quantity);
-                                        owner.addItem(item, owner.getPassword());
+                                        owner.addItem(item, owner.password());
                                     } else {
                                         System.out.println("invalid choice");
                                     }

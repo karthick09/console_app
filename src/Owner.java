@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public record Owner(String password) implements InventoryControl {
 
@@ -76,6 +77,15 @@ public record Owner(String password) implements InventoryControl {
             if (quantity <= item.getQuantity()) {
                 float price;
                 price = quantity * item.getItemPrice();
+                Scanner sc = new Scanner(System.in);
+                System.out.println("if any discount Y/N");
+                String choice=sc.next();
+                if(choice.equals("y")){
+                    System.out.println("enter the discount percentage");
+                    float discount=sc.nextFloat();
+                    discount=discount/100;
+                    price=price-(price*discount);
+                }
                 System.out.println("the total amount rs:" + price);
                 updateQuantity = item.getQuantity() - quantity;
                 Database.updateItem(quantity, updateQuantity, item, UserType.OWNER, "sales");

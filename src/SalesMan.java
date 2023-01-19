@@ -7,20 +7,20 @@ public class SalesMan extends User implements Sales{
 
 
     public void showItemList(){
-        Database.getItemList();
+        DatabaseManager.getItemList();
     }
 
     public void sales(String itemId,float quantity){
         Item item;
         float updateQuantity;
-        item=Database.getItem(itemId);
+        item= DatabaseManager.getItem(itemId);
         if(item!= null){
             if (quantity< item.getQuantity()){
                 float price;
                 price=quantity* item.getItemPrice();
                 System.out.println("the total amount rs:"+price);
                 updateQuantity= item.getQuantity()-quantity;
-                Database.updateItem(quantity,updateQuantity,item,this.getUserType(),"sales");
+                DatabaseManager.updateItem(quantity,updateQuantity,item,this.getUserType(),"sales");
             }
             else {
                 System.out.println("insufficient stock");

@@ -63,7 +63,7 @@ public class Main {
             Scanner scanner=new Scanner(System.in);
             string=scanner.nextLine();
             stringLength=string.length();
-            isUserName=Database.checkUserName(string,choice);
+            isUserName= DatabaseManager.checkUserName(string,choice);
             value=stringLength>=5;
         }while (!isUserName||!value);
         return string;
@@ -76,7 +76,7 @@ public class Main {
         do{
             Scanner scanner=new Scanner(System.in);
             string=scanner.nextLine();
-            isItemName=Database.checkItemName(string);
+            isItemName= DatabaseManager.checkItemName(string);
         }while (!isItemName);
         return string;
     }
@@ -87,7 +87,7 @@ public class Main {
         do{
             Scanner scanner=new Scanner(System.in);
             string=scanner.nextLine();
-            isItemId=Database.checkItemId(string);
+            isItemId= DatabaseManager.checkItemId(string);
         }while (!isItemId);
         return string;
     }
@@ -98,7 +98,7 @@ public class Main {
         do{
             Scanner scanner=new Scanner(System.in);
             string=scanner.nextLine();
-            isMID=Database.checkMId(string);
+            isMID= DatabaseManager.checkMId(string);
         }while (!isMID);
         return string;
     }
@@ -109,7 +109,7 @@ public class Main {
         do{
             Scanner scanner=new Scanner(System.in);
             string=scanner.nextLine();
-            isSID=Database.checkSId(string);
+            isSID= DatabaseManager.checkSId(string);
         }while (!isSID);
         return string;
     }
@@ -271,9 +271,9 @@ public class Main {
                                     System.out.println("1.manger list \n2.salesman list \n3.item list");
                                     int ch = validateInteger();
                                     switch (ch) {
-                                        case 1 -> Database.getMangerList();
-                                        case 2 -> Database.getSaleManList();
-                                        case 3 -> Database.getItemList();
+                                        case 1 -> DatabaseManager.getMangerList();
+                                        case 2 -> DatabaseManager.getSaleManList();
+                                        case 3 -> DatabaseManager.getItemList();
                                         default -> System.out.println("invalid choice");
                                     }
                                 }
@@ -364,7 +364,7 @@ public class Main {
                     password = sc.next();
                     if (login.login(username, password,choice1)) {
                         Manger manger;
-                        manger = Database.getManger(username);
+                        manger = DatabaseManager.getManger(username);
                         if (manger == null) {
                             System.out.println("manager not found");
                             break;
@@ -448,7 +448,7 @@ public class Main {
                         SalesMan salesMan;
                         String itemId;
                         float quantity;
-                        salesMan = Database.getSalesMan(username);
+                        salesMan = DatabaseManager.getSalesMan(username);
                         if (salesMan == null) {
                             System.out.println("salesman not found ");
                             break;

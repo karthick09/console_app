@@ -7,21 +7,21 @@ public class Manger extends User implements InventoryControl {
     }
 
     public void addItem(Item item, String id){
-        Database.addItem(item,id);
+        DatabaseManager.addItem(item,id);
     }
 
     public void deleteItem(String itemId,String id){
-        Database.deleteItem(itemId,id);
+        DatabaseManager.deleteItem(itemId,id);
     }
 
     public void showItemList(){
-        Database.getItemList();
+        DatabaseManager.getItemList();
     }
 
     public void sales(String itemId,float quantity){
             Item item;
             float updateQuantity;
-            item=Database.getItem(itemId);
+            item= DatabaseManager.getItem(itemId);
             if(item!= null){
                 if (quantity<=item.getQuantity()){
                     float price;
@@ -37,7 +37,7 @@ public class Manger extends User implements InventoryControl {
                     }
                     System.out.println("the total amount rs:"+price);
                     updateQuantity= item.getQuantity()-quantity;
-                    Database.updateItem(quantity,updateQuantity,item,this.getUserType(),"sales");
+                    DatabaseManager.updateItem(quantity,updateQuantity,item,this.getUserType(),"sales");
                 }
                 else {
                     System.out.println("insufficient stock");
@@ -52,10 +52,10 @@ public class Manger extends User implements InventoryControl {
     public void purchase(String id,float quantity){
             Item item;
             float updateQuantity;
-            item=Database.getItem(id);
+            item= DatabaseManager.getItem(id);
             if(item != null){
                 updateQuantity= item.getQuantity()+quantity;
-                Database.updateItem(quantity,updateQuantity,item,this.getUserType(),"purchase");
+                DatabaseManager.updateItem(quantity,updateQuantity,item,this.getUserType(),"purchase");
             }
             else {
                 System.out.println("item not found");

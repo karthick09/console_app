@@ -55,4 +55,5 @@ public abstract class User {
     public UserType getUserType() {
         return userType;
     }
+    abstract void sales();
 }

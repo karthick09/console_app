@@ -150,7 +150,14 @@ public class DatabaseManager {
         }
 
     }
+    static void addOwner(Owner owner){
+        database.setOwner(owner);
+    }
 
+    static Owner getOwner(){
+        return database.getOwner();
+
+    }
     public static boolean getLoginDetails(String id,String password,int choice){
         if(choice==2){
             for(Manger p : database.getManagerList()){
@@ -242,7 +249,5 @@ public class DatabaseManager {
                 System.out.println("access denied");
             }
         }
-
-
     }
 }

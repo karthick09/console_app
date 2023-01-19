@@ -13,11 +13,21 @@ public class Database {
         }
         return database;
     }
+    private  Owner owner;
     private static ArrayList<Item> itemList = new ArrayList<>();
     private static final ArrayList<Manger> managerList = new ArrayList<>();
     private static final ArrayList<SalesMan> salesManList = new ArrayList<>();
     private static HashMap<Item, Float> salesList = new HashMap<>();
     private static HashMap<Item, Float> purchaseList = new HashMap<>();
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public  void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     ArrayList<Manger> getManagerList(){
         return managerList;
     }
@@ -61,4 +71,5 @@ public class Database {
     void setItemList(ArrayList<Item> newItemList){
         itemList=newItemList;
     }
+
 }
